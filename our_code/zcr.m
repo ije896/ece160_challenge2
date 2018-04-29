@@ -1,15 +1,21 @@
 % zero-crossing rate (ZCR)
-function zcr = zcr(audio, winSize, stepSize)
-if (nargin < 3)
-    stepSize = 1;
+function zcr = zcr(audio, fs, winSize, stepSize)
+
+if (nargin < 4)
+    stepSize = 0.1;
+end
+if(nargin<3)
+    stepSize = 0.1;
+    winSize = 0.2;
 end
 if (nargin < 2)
-    winSize = 2;
-    stepSize = 1;
+    fs = 44100;
+    winSize = 0.2;
+    stepSize = 0.1;
 end
 
-winSize = winSize * 44100;
-stepSize = stepSize * 44100;
+winSize = winSize * fs;
+stepSize = stepSize * fs;
 a_len_sam = length(audio);
 audio = audio/max(abs(audio(:)));
 curr = 1;
