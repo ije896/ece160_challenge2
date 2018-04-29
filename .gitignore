@@ -1,5 +1,4 @@
 audioAnalysisLibraryCode/*
 audioFeatureExtraction/*
-audio/*
 *.wav
 .DS_Store
