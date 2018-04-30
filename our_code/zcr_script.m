@@ -2,9 +2,9 @@ speech_dirName = '../audio/speech/';
 music_dirName = '../audio/music/';
 sp_dir = dir([speech_dirName filesep '*.wav']);
 mu_dir = dir([music_dirName filesep '*.wav']);
-
-num_train = 40;
-num_test  = 40;
+total = length(sp_dir);
+num_train = 25;
+num_test  = 15;
 mu_zcr = zeros(num_train, 1);
 sp_zcr = zeros(num_train, 1);
 
@@ -53,7 +53,7 @@ end
 sp_good = 0;
 sp_bad = 0;
 % test speech
-for i = 1:num_test
+for i = (total-num_test+1):total
     sp_file = strcat(speech_dirName, sp_dir(i).name);
     [sp, sp_fs] = audioread(sp_file);
     sp_z = zcr(sp, sp_fs);

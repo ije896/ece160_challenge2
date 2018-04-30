@@ -22,8 +22,6 @@ curr = 1;
 % how many times are we going to calculate the windowed ZCR?
 % as many frames as it takes to analyze all of the audio
 numFrames = floor((a_len_sam-winSize)/stepSize) + 1;
-
-% remove ",1"
 zcr = zeros(numFrames, 1); % create empty array to fill with windowed zcr's
 for i = 1:numFrames
     window = audio(curr:curr+winSize-1);
