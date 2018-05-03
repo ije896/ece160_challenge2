@@ -1,4 +1,13 @@
-% spectral flux
+% spectral flux (SF)
+
+% --Inputs--
+% audio: matrix containing audio (extracted from audioread(file)
+% fs(hz) : sampling frequency of audio matrix
+% winSize(s): window size for calculating the spectral flux
+% stepSize(s): step size for iterative windowing
+
+% --Output--
+% sf: matrix of temporal spectral flux values for the given audio matrix
 function sf = spec_flux(audio, fs, winSize, stepSize)
 audio = audio/max(abs(audio(:)));
 a_len_sam = length(audio);

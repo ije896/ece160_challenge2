@@ -1,4 +1,13 @@
-% spectral centroid
+% spectral centroid (SC)
+
+% --Inputs--
+% audio: matrix containing audio (extracted from audioread(file)
+% fs(hz) : sampling frequency of audio matrix
+% winSize(s): window size for calculating the spectral centroid
+% stepSize(s): step size for iterative windowing
+
+% --Output--
+% sc: matrix of temporal spectral centroid values for the given audio matrix
 function sc = spec_cent(audio, fs, winSize, stepSize)
 % normalize the audio
 audio = audio/max(abs(audio(:)));
@@ -36,14 +45,15 @@ for i = 1:numFrames
     % algorithm follows:
     % sum(FFT * center_bin_freq) / sum(FFT)
     sc(i) = sum(centers.*transform)/sum(transform);
-    % let's prune silence with noise from the transform
+    % let's prune noise from the transform
     if(sum(window.^2) < 0.010)
         sc(i) = 0;
     end
+    % advance the window
     curr = curr + stepSize;
 end
 sc = sc/(fs);
-
+end
 
 
 

@@ -1,5 +1,7 @@
+% discriminates between speech and music for all files in a given directory
+% Using all three features, ['ZCR', 'SC', and 'SF'], and SVM in the file 
+% 'svm.mat' to label the new files
 function label = svm_discriminate(audio_folder)
-
 load('svm.mat', 'SVMModel')
 audio_dir = dir([audio_folder filesep '*.wav']);
 num_files = length(audio_dir);

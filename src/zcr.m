@@ -1,6 +1,14 @@
 % zero-crossing rate (ZCR)
-function zcr = zcr(audio, fs, winSize, stepSize)
 
+% --Inputs--
+% audio: matrix containing audio (extracted from audioread(file)
+% fs(hz) : sampling frequency of audio matrix
+% winSize(s): window size for calculating the ZCR
+% stepSize(s): step size for iterative windowing
+
+% --Output--
+% zcr: matrix of temporal ZCR values for the given audio matrix
+function zcr = zcr(audio, fs, winSize, stepSize)
 if (nargin < 4)
     stepSize = 0.1;
 end
